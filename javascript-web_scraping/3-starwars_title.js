@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
 const request = require('request');
-const urlApi = 'https://swapi.co/api/films/' + ProcessingInstruction.argv[2];
+const urlApi = 'https://swapi-api.hbtn.io/api/films/:id' + ProcessingInstruction.argv[2];
 
 request(urlApi, function (error, response, body) {
     if (error) {
