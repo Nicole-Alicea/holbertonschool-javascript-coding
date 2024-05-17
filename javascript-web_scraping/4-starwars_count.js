@@ -2,14 +2,19 @@
 const request = require('request');
 
 request.get(process.argv[2], function (error, response, body) {
-  let count = 0;
   if (error) {
     console.log(error);
+    return;
   }
-  for (let x = 0; JSON.parse(body).results[x] !== undefined; x++) {
-    if (JSON.parse(body).results[x].characters.includes('https://swapi-api.hbtn.io/api/people/18/')) {
+
+  const data = JSON.parse(body);
+  let count = 0;
+
+  for (let x = 0; x < data.results.length; x++) {
+    if (data.results[x].characters.includes('https://swapi-api.hbtn.io/api/people/18/')) {
       count++;
     }
   }
+
   console.log(count);
 });
